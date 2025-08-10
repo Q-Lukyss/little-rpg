@@ -1,0 +1,62 @@
+# Gobelins
+[[enemies]]
+type = "Gobelin"
+rank = "Named"
+names = ["Gribz", "Zug", "Snark", "Grobnar", "Blix", "Druk", "Rikrik", "Glim", "Zoz", "Nark"]
+
+[[enemies]]
+type = "Gobelin"
+rank = "Elite"
+names = ["Grum le Cruel", "Zkro le Methodiste", "Thrag le Brutal", "Makgorah l'Invaincu"]
+
+[[enemies]]
+type = "Gobelin"
+rank = "Boss"
+names = ["Skarn le Destructeur", "Gorath l'ancien"]
+
+[[enemies]]
+type = "Gobelin"
+rank = "Legendary"
+names = ["Gnorlax le père de toute choses", "Gshlomog la main d'or"]
+
+#Skeleton
+[[enemies]]
+type = "Skeleton"
+rank = "Named"
+names = ["Osram", "Clatter", "Drybone", "Rattle", "Marrow", "Skorn", "Bonelord", "Grimjaw", "Skarn", "Femur"]
+
+[[enemies]]
+type = "Skeleton"
+rank = "Elite"
+names = ["Seigneur Fémur", "Capitaine Tibia", "Karg l’Osseux", "Morbius"]
+
+[[enemies]]
+type = "Skeleton"
+rank = "Boss"
+names = ["Archiliche Noctis"]
+
+[[enemies]]
+type = "Skeleton"
+rank = "Legendary"
+names = ["Le Roi-Liche Eternel"]
+
+#Human
+[[enemies]]
+type = "Human"
+rank = "Named"
+names = ["Silas", "Nyra", "Vex", "Kael", "Shade", "Lira", "Raze", "Dorin", "Thorne", "Nim"]
+
+[[enemies]]
+type = "Human"
+rank = "Elite"
+names = ["Valtor l’Ombre", "Sir Garrick", "Erik le Fourbe", "Kaelen le Vif"]
+
+[[enemies]]
+type = "Human"
+rank = "Boss"
+names = ["Commandant Draven", "Capitaine Valerius"]
+
+[[enemies]]
+type = "Human"
+rank = "Legendary"
+names = ["L’Empereur Noir"]
