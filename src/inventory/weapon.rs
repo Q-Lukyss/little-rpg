@@ -37,7 +37,7 @@ impl WeaponKind {
         }
     }
 
-    pub fn get_weapon_wielding(&self) {
+    pub fn get_weapon_wielding(&self) -> Wield {
         match self {
             WeaponKind::Sword     => Wield::OneHand,
             WeaponKind::Axe       => Wield::OneHand,
