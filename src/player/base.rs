@@ -1,4 +1,4 @@
-use crate::inventory::{Inventory, Weapon};
+use crate::inventory::{shield::Shield, Inventory, Weapon};
 use super::stats::Stat;
 
 pub struct Player {
@@ -9,6 +9,7 @@ pub struct Player {
     pub xp: (u32, u32),
     pub inventory: Inventory,
     pub equiped_weapon: Weapon,
+    pub equiped_shield : Option<Shield>,
     pub buffs: Vec<ActiveBuff>,
 }
 

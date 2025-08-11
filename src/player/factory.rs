@@ -1,5 +1,5 @@
 use super::base::{Player, ActiveBuff};
-use crate::inventory::{Item, Potion, Weapon, WeaponKind};
+use crate::inventory::{shield::Shield, Item, Potion, Weapon, WeaponKind};
 
 impl Player {
     pub fn new(name: String) -> Self {
@@ -11,6 +11,7 @@ impl Player {
             xp: (0, 100),
             inventory: vec![Item::Potion(Potion::Healing(10))],
             equiped_weapon: Weapon { kind: WeaponKind::Sword, base_damage: 5 },
+            equiped_shield: Some(Shield { armor : 5 }),
             buffs: vec![],
         }
     }
