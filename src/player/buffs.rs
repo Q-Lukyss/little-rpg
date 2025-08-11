@@ -1,5 +1,6 @@
 use super::base::{Player, ActiveBuff};
-use crate::inventory::{Potion, Stat};
+use super::stats::Stat;
+use crate::inventory::{Potion};
 
 impl Player {
     pub fn use_potion(&mut self, potion: Potion) {

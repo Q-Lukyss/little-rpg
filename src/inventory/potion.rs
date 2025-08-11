@@ -1,4 +1,4 @@
-use super::stats::Stat;
+use crate::player::stats::Stat;
 
 #[derive(Debug, Clone)]
 pub enum Potion {

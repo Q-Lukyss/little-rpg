@@ -1,4 +1,5 @@
-use crate::inventory::{Inventory, Stat, Weapon};
+use crate::inventory::{Inventory, Weapon};
+use super::stats::Stat;
 
 pub struct Player {
     pub name: String,
