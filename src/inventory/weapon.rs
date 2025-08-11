@@ -1,4 +1,10 @@
 #[derive(Debug, Clone)]
+pub struct Weapon {
+    pub kind: WeaponKind,
+    pub base_damage: u32,
+}
+
+#[derive(Debug, Clone)]
 pub enum WeaponKind {
     Sword,
     Axe,
@@ -14,11 +20,12 @@ pub enum AttackPattern {
     EveryThreeTurns,
 }
 
-#[derive(Debug, Clone)]
-pub struct Weapon {
-    pub kind: WeaponKind,
-    pub base_damage: u32,
+pub enum Wield {
+    OneHand,
+    TwoHands
 }
+
+
 
 impl WeaponKind {
     pub fn attack_pattern(&self) -> AttackPattern {
@@ -27,6 +34,15 @@ impl WeaponKind {
             WeaponKind::Axe       => AttackPattern::EveryTwoTurns,
             WeaponKind::Spear     => AttackPattern::TwicePerTurn,
             WeaponKind::LongSword => AttackPattern::EveryThreeTurns,
+        }
+    }
+
+    pub fn get_weapon_wielding(&self) {
+        match self {
+            WeaponKind::Sword     => Wield::OneHand,
+            WeaponKind::Axe       => Wield::OneHand,
+            WeaponKind::Spear     => Wield::OneHand,
+            WeaponKind::LongSword => Wield::TwoHands,
         }
     }
 }
