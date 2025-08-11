@@ -17,7 +17,7 @@
 
 ## Histoire et Deroule du jeu
 
-Le jeu se déroule à travers **5 biomes** et se compose de deux actes principaux, suivis d’un épilogue et des crédits.
+Le jeu se déroule à travers **5 Donjons** et se compose de deux actes principaux, suivis d’un épilogue et des crédits.
 
 ---
 
