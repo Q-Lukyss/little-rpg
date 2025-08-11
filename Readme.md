@@ -90,12 +90,12 @@ Combat structuré en **choix tactiques** à chaque tour :
 
 ## 🔧 Fonctionnalités prévues
 
-### ✅ Phase 1 – Socle de gameplay
+### ✅ Phase 1 – Socle de gameplay | But avoir le gameplay fonctionnel
 - [x] Structuration des entités `Player` et `Enemy`
 - [ ] Système de combat **tour par tour** avec choix tactiques :
   - [ ] Fuite (conserve l’XP mais perd le loot)
   - [ ] Défense (bouclier requis, riposte si arme à une main)
-  - [ ]Attaque (pattern selon l’arme)
+  - [ ] Attaque (pattern selon l’arme)
   - [ ] Parade (riposte spécifique, armes à deux mains ou avec trait *Parade*)
   - [ ] Utilisation d’objets via l’inventaire
 - [x] Expérience (XP) et montée de niveau
@@ -107,7 +107,7 @@ Combat structuré en **choix tactiques** à chaque tour :
   - Élites
   - Légendaires (possibles en salle finale)
 - [ ] Système de coups critiques
-- [ ] Différentes statistiques de personnage (HP, Critique, Vigueur, Endurance/blocage)
+- [ ] Différentes statistiques de personnage (HP, Critique, Defense)
 - [x] Cheat code `demonic_eye` (tue tous les ennemis dans la salle actuelle)
 
 ---
@@ -119,20 +119,19 @@ Combat structuré en **choix tactiques** à chaque tour :
 - [ ] Système d’IA ennemie basé sur des **patterns** :
   - Lambda → patterns simples
   - Autres types → patterns variés et adaptatifs
-- [ ] Ressources secondaires : vitalité, blocage, attaque
 - [ ] Pouvoirs spéciaux pour certains ennemis (notamment Boss)
 
 ---
 
 ### 🧭 Phase 3 – Exploration et navigation
-- [ ] Système de zones et progression par **biomes**
+- [ ] Système de zones et progression par **Donjons**
 - [ ] Système de donjons avec structure par salles :
   - Acte 1 → 5 salles
   - Acte 2 → 10 salles
   - Types et nombres d’ennemis selon la salle
 - [ ] Menus de navigation (explorer, voir stats, quitter…)
-- [ ] Salles de combat ou d’événement
-- [ ] Points de repos (type feux de camp Dark Souls)
+- [ ] Salles de combat
+- [ ] Sauvegarde et chargement de partie (via `serde_json`)
 
 ---
 
@@ -144,7 +143,6 @@ Combat structuré en **choix tactiques** à chaque tour :
 ---
 
 ### 🏆 Phase 5 – Fin & post-game
-- [ ] Sauvegarde et chargement de partie (via `serde_json`)
 - [ ] Fin du jeu (victoire ou boss final)
 - [ ] Déblocage du **mode Hardcore** :
   - Suppression de la sauvegarde en cas de mort
