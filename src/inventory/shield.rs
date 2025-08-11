@@ -1,3 +1,3 @@
 pub struct Shield {
-    armor : u32,
+    pub armor : u32,
 }
