@@ -1,6 +1,7 @@
 pub mod base;
 pub mod potion;
 pub mod weapon;
+pub mod shield;
 
 // Réexports pour garder la même API publique
 pub use base::{Item, Inventory};
