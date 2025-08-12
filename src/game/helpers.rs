@@ -8,7 +8,7 @@ pub fn read_line_trimmed() -> String {
     s.trim().to_string()
 }
 
-pub fn can_attack_this_turn(turn: u32, weapon_kind: &WeaponKind) -> bool {
+pub fn can_attack_this_turn(turn: &u32, weapon_kind: &WeaponKind) -> bool {
     match weapon_kind.attack_pattern() {
         AttackPattern::EveryTurn => true,
         AttackPattern::EveryTwoTurns => turn % 2 == 0,
