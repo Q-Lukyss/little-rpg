@@ -14,7 +14,7 @@ pub fn run_game_loop(mut player: Player) {
         state = match state {
             GameState::Menu => menu::run(),
             GameState::Exploration => exploration::run(&mut player),
-            GameState::Combat(enemy) => combat::run(&mut player,  enemy),
+            GameState::Combat(mut enemies) => combat::run(&mut player, &mut enemies),
             GameState::Inventory => inventory::run(&mut player),
             GameState::GameOver => {
                 println!("Tu es mort. Fin du jeu.");

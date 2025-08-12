@@ -48,5 +48,5 @@ pub fn run(_player: &mut Player) -> GameState {
         println!("Un {} apparaît !", enemy.enemy_type.as_str());
     }
 
-    GameState::Combat(enemy)
+    GameState::Combat(vec![enemy])
 }

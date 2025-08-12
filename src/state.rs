@@ -3,7 +3,7 @@ use crate::{enemy::Enemy};
 pub enum GameState {
     Menu,
     Exploration,
-    Combat(Enemy),
+    Combat(Vec<Enemy>),
     GameOver,
     Inventory
 }
