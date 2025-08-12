@@ -1,5 +1,6 @@
 use rand::Rng;
 use crate::data::enemies::pick_name_from_db;
+use crate::player::Player;
 
 use super::{Enemy, EnemyType, EnemyRank};
 use super::spawn_rate::{DEFAULT_RATES, roll_rank};
@@ -45,6 +46,13 @@ impl Enemy {
         let (hp, atk) = base.scaled(rank);
 
         Enemy { name, hp, attack: atk, enemy_type, rank }
+    }
+
+    pub fn attack(&self, player: &mut Player) {
+        player.hp.0 -= self.attack;
+    }
+    pub fn defense(){
+        unimplemented!()
     }
 
     pub fn xp_reward(&self) -> u32 { self.rank.xp_reward() }
