@@ -4,10 +4,10 @@ pub mod combat;
 pub mod inventory;
 pub mod helpers;
 
-use crate::player::Player;
+use crate::entity::Entity;
 use crate::state::GameState;
 
-pub fn run_game_loop(mut player: Player) {
+pub fn run_game_loop(mut player: Entity) {
     let mut state = GameState::Menu;
 
     loop {
@@ -23,4 +23,3 @@ pub fn run_game_loop(mut player: Player) {
         };
     }
 }
-

@@ -1,7 +1,10 @@
+use crate::inventory::shield::Shield;
+
 #[derive(Debug, Clone)]
 pub struct Weapon {
     pub kind: WeaponKind,
     pub base_damage: u32,
+    pub dmg_reduction_parry : u32,
 }
 
 #[derive(Debug, Clone)]
@@ -19,12 +22,16 @@ pub enum AttackPattern {
     TwicePerTurn,
     EveryThreeTurns,
 }
-
+#[derive(Debug, Clone)]
 pub enum Wield {
     OneHand,
     TwoHands
 }
-
+#[derive(Debug, Clone)]
+pub enum OffHand  {
+    Shield(Shield),
+    Weapon(Weapon),
+}
 
 
 impl WeaponKind {
@@ -67,4 +74,16 @@ impl Weapon {
             self.get_dpt()
         );
     }
+}
+
+// Pouvoirs D’ARME (portés par l’arme : runes, enchantements, propriétés)
+#[derive(Debug, Clone)]
+pub enum WeaponPower {
+    FlatAttack(i32),
+    PercentAttack(f32),
+    FlatDefense(i32),
+    PercentDefense(f32),
+    OnHitBleed { damage: i32, turns: u8, chance: f32 },
+    OnHitLifesteal(f32), // vol de vie *uniquement quand cette arme touche*
+    // … autres effets-on-hit d’arme
 }

@@ -1,9 +1,8 @@
-use crate::enemy::{Enemy, EnemyRank, EnemyType};
 use crate::state::GameState;
-use crate::player::Player;
+use crate::entity::{Entity, EnemyRank, EnemyType, spawn_with_type_and_rank, Kind, EnemyData};
 use super::helpers::read_line_trimmed;
 
-pub fn run(_player: &mut Player) -> GameState {
+pub fn run(_player: &mut Entity) -> GameState {
     // choisir le type
     println!("=== Phase 1 ===");
     println!("Choisir un Type d'ennemi.");
@@ -40,12 +39,14 @@ pub fn run(_player: &mut Player) -> GameState {
         }
     };
 
-    let enemy = Enemy::spawn_with_type_and_rank(enemy_type, enemy_rank);
-    if let Some(name) = &enemy.name {
-        println!("Un {} apparaît ! Il s'agit de {}.", enemy.enemy_type.as_str(), name );
-    }
-    else {
-        println!("Un {} apparaît !", enemy.enemy_type.as_str());
+    let enemy = spawn_with_type_and_rank(enemy_type, enemy_rank);
+
+    if let crate::entity::Kind::Enemy(EnemyData { enemy_type, .. }) = &enemy.kind {
+        if let Some(name) = &enemy.name {
+            println!("Un {} apparaît ! Il s'agit de {}.", enemy_type.as_str(), name);
+        } else {
+            println!("Un {} apparaît !", enemy_type.as_str());
+        }
     }
 
     GameState::Combat(vec![enemy])

@@ -120,6 +120,7 @@ Combat structuré en **choix tactiques** à chaque tour :
   - Lambda → patterns simples
   - Autres types → patterns variés et adaptatifs
 - [ ] Pouvoirs spéciaux pour certains ennemis (notamment Boss)
+- [ ] Pouvoir d'arme
 
 ---
 

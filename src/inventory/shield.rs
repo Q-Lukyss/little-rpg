@@ -1,3 +1,4 @@
+#[derive(Debug, Clone)]
 pub struct Shield {
-    pub armor : u32,
+    pub dmg_reduction : u32,
 }

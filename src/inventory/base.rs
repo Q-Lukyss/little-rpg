@@ -1,6 +1,6 @@
 use super::{Potion, Weapon};
 
-#[derive(Debug)]
+#[derive(Debug, Clone)]
 pub enum Item {
     Potion(Potion),
     Weapon(Weapon),

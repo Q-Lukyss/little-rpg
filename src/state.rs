@@ -1,9 +1,9 @@
-use crate::{enemy::Enemy};
+use crate::entity::Entity;
 
 pub enum GameState {
     Menu,
     Exploration,
-    Combat(Vec<Enemy>),
+    Combat(Vec<Entity>),
     GameOver,
-    Inventory
+    Inventory,
 }

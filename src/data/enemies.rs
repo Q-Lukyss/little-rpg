@@ -1,8 +1,8 @@
 use once_cell::sync::Lazy;
 use serde::Deserialize;
 use std::{fs, path::Path};
+use crate::entity::{EnemyType, EnemyRank};
 
-use crate::enemy::{EnemyRank, EnemyType};
 
 #[derive(Deserialize)]
 pub struct EnemyRow {
