@@ -97,6 +97,7 @@ pub fn spawn_with_type_and_rank(enemy_type: EnemyType, rank: EnemyRank) -> Entit
         stats: Stats {
             hp, max_hp: hp,
             attack: atk,
+            speed: 1,
             defense: 0,
             crit: 0.0,
             level: 1,

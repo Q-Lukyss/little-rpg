@@ -7,9 +7,13 @@ pub fn make_player(name: String) -> Entity {
     Entity {
         name: Some(name),
         stats: Stats {
-            hp: 20, max_hp: 20,
-            attack: 0, defense: 0,
-            crit: 0.05, level: 1,
+            hp: 20, 
+            max_hp: 20,
+            attack: 0,
+            speed: 1, 
+            defense: 0,
+            crit: 0.05, 
+            level: 1,
             xp: Some(0), xp_to_level: Some(100),
         },
         equipment: Equipment {

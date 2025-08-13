@@ -15,6 +15,7 @@ pub struct Stats {
     pub hp: u32,
     pub max_hp: u32,
     pub attack: i32,
+    pub speed: i32,
     pub defense: i32,
     pub crit: f32,       // 0.0..=1.0
     pub level: u8,
@@ -25,6 +26,7 @@ pub struct Stats {
 #[derive(Debug, Clone, PartialEq)]
 pub enum StatsType {
     Attack,
+    Speed,
     Defense,
     Hp,
     MaxHp,
