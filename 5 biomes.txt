@@ -1,37 +1,53 @@
 Histoire et Flow du Jeu
 
-5 biomes
+Différents Elements
+-Exploration
+-Dongeons
+-Combat
+-Village
 
-Acte 1 5 Salles par donjons
-1 enemi premiere salle
-1 - 3 ennemies salle 2 a 4 ( possibilite de spawn de nommes et Elite)
-1 - 3 + boss salle 5 (possiblite Legendaire)
+Différentes actions
+Inventaire
+Journal de Quete
+Savegarder
 
-Acte 2 10 Salles par Donjon
-salle 1 a 5 -> 3 - 5 ennemies
-4 a 9 -> 5 a 10 ennemies
-Salle 10 2 Elites + Boss (possiblite Legendaire)
+Ennemis
 
-Epilogue et Credits
-
-Acte 1
 Gobelins
 Skelettes
-Humains
-
-Acte 2
+Humains (bandits, miliciens de telle ou telle province, armé réguliere)
 Vampires
 Demons
+Monstres divers (Loup-Garous, Goules, )
+
+-Village
+- Alchimiste pour alterations de stats
+- Boutique pour potions et bandages et autres
+- Auberge pour full restoration et pnj de lore + quete
+
+-Exploration
+plusieurs types d'evenements
+- combats avec des mobs randoms
+- interaction et quest giver
+
+Objets
+Armes,
+Armure
+Bouclier
+Bijoux
+
+Mécanismes
+Quete
+xp
+réputation de faction
+Bonus/Malus Globaux lié a réputation ou Quête
 
 Gameplay et Combat
 
-level up
-xp
-sauvegarde
 tour par tour
 
-système de combat par choix : 
-	Fuite : abandonne le loot en cours mais garde xp
+système de combat par choix :
+	Fuite : abandonne le loot et or en cours mais garde xp
 	Defense = les ennemis vous attaquent, selon votre bouclier vous bloquer et riposter possible seulement si bouclier equipe
 par exemple cette action n est possible que pour les armes a une mains et qui n attaque qu une fois par tour
 	Attaque = Vous attaquer un ennemi selon le pattern de votre arme
@@ -42,3 +58,9 @@ Les Enemies on des patterns
 
 Par exemple Gobelin Lambda ne fait qu'attaquer
 Boss ont des pouvoir speciaux
+
+Mode Hardcore
+Fin du jeu (victoire ou boss final)
+Déblocage du **mode Hardcore** :
+Suppression de la sauvegarde en cas de mort
+Fin alternative

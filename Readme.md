@@ -10,50 +10,78 @@
 
 - Développer un RPG textuel complet en Rust
 - Apprendre les bonnes pratiques en structuration de projet Rust
-- Explorer des concepts avancés : inventaire, IA ennemie, donjons, sauvegarde JSON...
+- Progresser en Game Dev
+- Progresser en Rust Idiomatique
+- Explorer l'ecosysteme de Rust : Serde, Ratatui,...
 - Créer un gameplay simple mais accessible
+- Mener un projet Game Dev itératif qui abouti à un jeu fini
 
 ---
 
 ## Histoire et Deroule du jeu
 
-Le jeu se déroule à travers **5 Donjons** et se compose de deux actes principaux, suivis d’un épilogue et des crédits.
+Le jeu se dans un univers mediaval fantastique, le joueur se reveille sans souvenir de son passé, il doit dans un premier temps trouver un village ou se reposer.
+cela fait office de phase de tutoriel.   
+Ensuite le coeur du jeu est d'alterner entre exploration, combat, ville et donjon afin de découvrir les mystères qui entourent le joeur et de découvrir les secrets de l'univers.
 
 ---
-
-### Acte 1
-- **Donjons** : 5 salles chacun.
-- **Progression** :
-  - **Salle 1** : 1 ennemi.
-  - **Salles 2 à 4** : 1 à 3 ennemis (possibilité d’apparition d’**ennemis nommés** ou **Élite**).
-  - **Salle 5** : 1 à 3 ennemis + **Boss** (possibilité d’apparition **Légendaire**).
-- **Types d’ennemis** :
-  - Gobelins  
-  - Squelettes  
-  - Humains  
-
----
-
-### Acte 2
-- **Donjons** : 10 salles chacun.
-- **Progression** :
-  - **Salles 1 à 5** : 3 à 5 ennemis.
-  - **Salles 6 à 9** : 5 à 10 ennemis.
-  - **Salle 10** : 2 ennemis **Élite** + **Boss** (possibilité d’apparition **Légendaire**).
-- **Types d’ennemis** :
-  - Vampires  
-  - Démons  
-
----
-
-### Fin
-- **Épilogue** : conclusion de l’histoire.
-- **Crédits** : remerciements mon nom mdr.
-
 
 ## Gameplay
 
 Le jeu repose sur un système **tour par tour** avec progression du personnage, gestion de l’XP et possibilité de sauvegarde.
+
+### Choix de l'action
+
+Le joueur choisit sont Action parmis les suivantes :
+ - **Explorer** : explore les environs pour trouver des objets ou des ennemis.
+ - **Ville** : visitez les villes pour acheter des objets ou des équipements.
+ - **Donjon** : pénétrez dans des donjons pour trouver des objets ou des ennemis.
+ - **Voyage Rapide** : retourner dans une ville déja visitée.  
+ 
+#### Exploration
+
+le mode exploration permet au joueur de découvrir les alentours, de trouver des ennemis, des objets, des pnj, des actions de quetes.   
+c'est en explorant que l'on decouvre des nouvelles villes et des donjons.
+
+#### Ville
+
+La ville est un lieu où le joueur peut acheter des objets ou des équipements et se reposer.   
+Elle se compose de plusieurs éléments : 
+- **Marché** : achetez/vendre des objets et équipements.
+- **Auberge** : réparez votre équipement et récupérez des points de vie.
+- **Alchimiste** : concotez des potions et elixirs(buffe et debufs temporaires).
+- **Evennements Uniques** : Pnj de Quête et événements de l'histoire.
+
+#### Donjon
+
+Le donjon est un lieu où le joueur peut rencontrer des ennemis et trouver des objets.   
+Il se compose de plusieurs éléments : 
+- **Entrée** : commencez votre assaut.
+- **Chambres** : explorez les chambres pour trouver des objets ou des ennemis.
+- **Boss** : combattez le boss pour sortir du donjon.
+- **Ennemis** : Les ennemis sont répartis en differents tiers. : 
+  - **Tiers 1** : Les ennemis lambda de la faction.
+  - **Tiers 2** : Les ennemis uniques Nommés de la faction.
+  - **Tiers 3** : Les ennemis uniques Elite de la faction.
+  - **Tiers 4** : Les ennemis uniques de la faction de rang Boss, il s'agit des Boss et Legendaires.
+
+### Combat
+
+### Inventaire
+
+#### Armes
+#### Armure
+#### Potion et Elixir
+
+### Joueur
+
+#### Réputation
+
+### Progression
+
+#### Experience
+#### Réputation
+#### Quêtes
 
 ---
 
@@ -84,13 +112,17 @@ Combat structuré en **choix tactiques** à chaque tour :
 
 ### IA des ennemis
 - **Patterns d’attaque** spécifiques selon le type d’ennemi.
-  - Exemple : **Gobelin Lambda** → attaque uniquement.
-  - **Boss** → possèdent des pouvoirs spéciaux.
+  - **Tier 1** → Mono pattern reptété. exemple ["attaque", "bloque"]
+  - **Tier 2** → Mono pattern reptété mais unique à l'ennemi.
+  - **Tier 3** → Multi Pattern Possède un/des pouvoirs spéciaux.
+  - **Tier 4** → Multi pattern, Possède des pouvoirs spéciaux.
 
 
-## 🔧 Fonctionnalités prévues
+## 🔧 Implémentation de Features
 
-### ✅ Phase 1 – Socle de gameplay | But avoir le gameplay fonctionnel
+A redéfinir
+
+<!--### ✅ Phase 1 – Socle de gameplay | But avoir le gameplay fonctionnel
 - [x] Structuration des entités `Player` et `Enemy`
 - [ ] Système de combat **tour par tour** avec choix tactiques :
   - [ ] Fuite (conserve l’XP mais perd le loot)
@@ -147,7 +179,7 @@ Combat structuré en **choix tactiques** à chaque tour :
 - [ ] Fin du jeu (victoire ou boss final)
 - [ ] Déblocage du **mode Hardcore** :
   - Suppression de la sauvegarde en cas de mort
-  - Fin alternative
+  - Fin alternative-->
 
 ---
 
@@ -158,18 +190,17 @@ Combat structuré en **choix tactiques** à chaque tour :
   - [`rand`](https://crates.io/crates/rand) – génération aléatoire
   - [`serde`](https://crates.io/crates/serde), [`serde_json`](https://crates.io/crates/serde_json) – sauvegarde JSON
   - (à venir) [`colored`] – mise en forme terminal
+  - (à venir) [`ratatui`] – UI terminal plus avancée
 
 ---
 
-## 🚀 Lancer le jeu
+## 🚀 Dev Lancer le jeu
 
 ```bash
 cargo run
 ```
 
-Le jeu est actuellement en cours de développement. Seules certaines fonctionnalités de base sont disponibles.
 
+## Auteur
 
-## 👨‍💻 Auteur
-
-Projet réalisé par Quentin Lachery dans le cadre d’un apprentissage Rust appliqué à la conception de jeux vidéo en ligne de commande.
+Quentin Lachery.
