@@ -1,0 +1,125 @@
+# ===============================
+# LOOT — Lambdas seulement
+# ===============================
+# mode = "pick_one" -> max 1 drop par roll (le reste = no drop)
+# rolls = 1 pour tous les lambdas (sobre)
+
+# --------- GOBELIN ---------
+[loot.by_type.Gobelin.Lambda]
+rolls = 1
+mode  = "pick_one"
+
+[[loot.by_type.Gobelin.Lambda.drops]]
+kind   = "potion"
+chance = 0.15
+potion = { type = "Healing", amount = 10 }
+
+[[loot.by_type.Gobelin.Lambda.drops]]
+kind   = "weapon"
+chance = 0.12
+weapon = { kind = "Dagger", base_damage = 2, dmg_reduction_parry = 0 }
+
+[[loot.by_type.Gobelin.Lambda.drops]]
+kind   = "shield"
+chance = 0.08
+shield = { dmg_reduction_parry = 2 }
+# Somme = 0.35 → EV ≈ 0.35 item/kill
+
+
+# --------- HUMAN ---------
+[loot.by_type.Human.Lambda]
+rolls = 1
+mode  = "pick_one"
+
+[[loot.by_type.Human.Lambda.drops]]
+kind   = "potion"
+chance = 0.15
+potion = { type = "Healing", amount = 12 }
+
+[[loot.by_type.Human.Lambda.drops]]
+kind   = "weapon"
+chance = 0.12
+weapon = { kind = "Sword", base_damage = 4, dmg_reduction_parry = 2 }
+
+[[loot.by_type.Human.Lambda.drops]]
+kind   = "shield"
+chance = 0.10
+shield = { dmg_reduction_parry = 3 }
+# Somme = 0.37
+
+
+# --------- SKELETON ---------
+# (off = none → pas de bouclier)
+[loot.by_type.Skeleton.Lambda]
+rolls = 1
+mode  = "pick_one"
+
+[[loot.by_type.Skeleton.Lambda.drops]]
+kind   = "potion"
+chance = 0.12
+potion = { type = "Healing", amount = 10 }
+
+[[loot.by_type.Skeleton.Lambda.drops]]
+kind   = "weapon"
+chance = 0.18
+weapon = { kind = "Spear", base_damage = 2, dmg_reduction_parry = 3 }
+# Somme = 0.30
+
+
+# --------- ORC ---------
+# (off = arme → pas de bouclier)
+[loot.by_type.Orc.Lambda]
+rolls = 1
+mode  = "pick_one"
+
+[[loot.by_type.Orc.Lambda.drops]]
+kind   = "potion"
+chance = 0.12
+potion = { type = "Healing", amount = 15 }
+
+[[loot.by_type.Orc.Lambda.drops]]
+kind   = "weapon"
+chance = 0.18
+weapon = { kind = "Axe", base_damage = 4, dmg_reduction_parry = 2 }
+# Somme = 0.30
+
+
+# --------- VAMPIRE ---------
+# (off = Dagger → pas de bouclier)
+[loot.by_type.Vampire.Lambda]
+rolls = 1
+mode  = "pick_one"
+
+[[loot.by_type.Vampire.Lambda.drops]]
+kind   = "potion"
+chance = 0.12
+potion = { type = "Healing", amount = 15 }
+
+[[loot.by_type.Vampire.Lambda.drops]]
+kind   = "weapon"
+chance = 0.10
+weapon = { kind = "Sword", base_damage = 15, dmg_reduction_parry = 5 }
+
+[[loot.by_type.Vampire.Lambda.drops]]
+kind   = "weapon"
+chance = 0.08
+weapon = { kind = "Dagger", base_damage = 7,  dmg_reduction_parry = 3 }
+# Somme = 0.30
+
+
+# --------- DEMON ---------
+# (off = none → pas de bouclier)
+[loot.by_type.Demon.Lambda]
+rolls = 1
+mode  = "pick_one"
+
+[[loot.by_type.Demon.Lambda.drops]]
+kind   = "potion"
+chance = 0.12
+potion = { type = "Healing", amount = 20 }
+
+[[loot.by_type.Demon.Lambda.drops]]
+kind   = "weapon"
+chance = 0.18
+weapon = { kind = "LongSword", base_damage = 30, dmg_reduction_parry = 15 }
+# Somme = 0.30

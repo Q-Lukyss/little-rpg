@@ -1,0 +1,11 @@
+# ---------------------------------------------
+# 2) CONFIG RANGS : XP et multiplicateurs (opt)
+#    -> ton code a déjà stat_multiplier() & xp_reward()
+#       Ici tu peux OVERRIDE sans modifier le code.
+# ---------------------------------------------
+[ranks]
+Lambda   = { xp = 20,  multiplier = 1.0 }
+Named    = { xp = 50,  multiplier = 1.5 }
+Elite    = { xp = 120, multiplier = 2.5 }   # exemple override
+Boss     = { xp = 250, multiplier = 4.0 }   # exemple override
+Legendary= { xp = 600, multiplier = 7.0 }   # exemple override

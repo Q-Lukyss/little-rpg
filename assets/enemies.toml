@@ -60,3 +60,66 @@ names = ["Commandant Draven", "Capitaine Valerius"]
 type = "Human"
 rank = "Legendary"
 names = ["L’Empereur Noir"]
+
+# Orc
+[[enemies]]
+type = "Orc"
+rank = "Named"
+names = ["Gorbag", "Uzgakh", "Murz", "Thok", "Drog", "Krag", "Urbul", "Nazg", "Grush", "Bolg"]
+
+[[enemies]]
+type = "Orc"
+rank = "Elite"
+names = ["Throm le Ravageur", "Kharz le Briseur", "Urgol le Sanguinaire"]
+
+[[enemies]]
+type = "Orc"
+rank = "Boss"
+names = ["Gorthak Brise-Monde"]
+
+[[enemies]]
+type = "Orc"
+rank = "Legendary"
+names = ["Zodd l'immortel", "Ymn'osh le Jaune"]
+
+# Demon
+[[enemies]]
+type = "Demon"
+rank = "Named"
+names = ["Azrak", "Malikar", "Vorin", "Ghaz", "Xeroth"]
+
+[[enemies]]
+type = "Demon"
+rank = "Elite"
+names = ["Zariel le Fléau", "Belkor le Dévoreur"]
+
+[[enemies]]
+type = "Demon"
+rank = "Boss"
+names = ["Archidémon Ragath", "Belial le Roi des Démons"]
+
+[[enemies]]
+type = "Demon"
+rank = "Legendary"
+names = ["Eve la Séductrice", "???"]
+
+# Vampire
+[[enemies]]
+type = "Vampire"
+rank = "Named"
+names = ["Seraphine", "Valen", "Mordred", "Lilith", "Cassian", "Isolde", "Lucian", "Dorian", "Selene", "Alaric"]
+
+[[enemies]]
+type = "Vampire"
+rank = "Elite"
+names = ["Comtesse Vespera", "Malachar le Déshérité", "Baroness Nyx", "Duc Thorne"]
+
+[[enemies]]
+type = "Vampire"
+rank = "Boss"
+names = ["Seigneur Vladis", "Dame Morgana"]
+
+[[enemies]]
+type = "Vampire"
+rank = "Legendary"
+names = ["Vladd l'Empaleur", "Sunev l'Éternelle"]
