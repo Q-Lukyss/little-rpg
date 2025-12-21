@@ -13,6 +13,7 @@ pub enum WeaponKind {
     Axe,
     Spear,
     LongSword,
+    Dagger,
 }
 
 #[derive(Debug, PartialEq)]
@@ -41,6 +42,7 @@ impl WeaponKind {
             WeaponKind::Axe       => AttackPattern::EveryTwoTurns,
             WeaponKind::Spear     => AttackPattern::TwicePerTurn,
             WeaponKind::LongSword => AttackPattern::EveryThreeTurns,
+            WeaponKind::Dagger    => AttackPattern::EveryTurn,
         }
     }
 
@@ -50,6 +52,7 @@ impl WeaponKind {
             WeaponKind::Axe       => Wield::OneHand,
             WeaponKind::Spear     => Wield::OneHand,
             WeaponKind::LongSword => Wield::TwoHands,
+            WeaponKind::Dagger    => Wield::OneHand,
         }
     }
 }

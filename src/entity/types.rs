@@ -108,7 +108,6 @@ pub enum EnemyType {
     Skeleton,
     Vampire,
     Demon,
-    Dragon,
     Orc,
 }
 
@@ -120,7 +119,6 @@ impl EnemyType {
             EnemyType::Human    => "Bandit",
             EnemyType::Vampire  => "Vampire",
             EnemyType::Demon    => "Démon",
-            EnemyType::Dragon   => "Dragon",
             EnemyType::Orc      => "Orc",
         }
     }

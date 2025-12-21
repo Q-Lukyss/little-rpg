@@ -1,0 +1,33 @@
+# ---------------------------------------------
+# 4) ÉQUIPEMENT PAR TYPE (+ override par rang)
+#    Les champs correspondent à ta struct Weapon.
+#    Offhand est soit un shield, soit une weapon.
+# ---------------------------------------------
+[equipment.by_type.Gobelin]
+main = { kind = "Dagger", base_damage = 2, dmg_reduction_parry = 0 }
+off  = { shield = { dmg_reduction_parry = 2 } }
+
+[equipment.by_type.Human]
+main = { kind = "Sword", base_damage = 4, dmg_reduction_parry = 2 }
+off  = { shield = { dmg_reduction_parry = 3 } }
+
+[equipment.by_type.Skeleton]
+main = { kind = "Spear", base_damage = 2, dmg_reduction_parry = 3 }
+off  = { none = true }
+
+[equipment.by_type.Orc]
+main = { kind = "Axe", base_damage = 4, dmg_reduction_parry = 2 }
+off  = { kind = "Axe", base_damage = 4, dmg_reduction_parry = 2 }
+
+# override par rang (ex: Chef orc avec bouclier)
+[equipment.by_type.Gobelin.overrides.Boss]
+main = { kind = "Dagger", base_damage = 6, dmg_reduction_parry = 5 }
+off  = { kind = "Dagger", base_damage = 6, dmg_reduction_parry = 5 }
+
+[equipment.by_type.Vampire]
+main = { kind = "Sword", base_damage = 15, dmg_reduction_parry = 5 }
+off  = { kind = "Dagger", base_damage = 7, dmg_reduction_parry = 3 }
+
+[equipment.by_type.Demon]
+main = { kind = "LongSword", base_damage = 30, dmg_reduction_parry = 15 }
+off  = { none = true }

@@ -140,6 +140,11 @@ A redéfinir
   - Légendaires (possibles en salle finale)
 - [ ] Système de coups critiques
 - [ ] Différentes statistiques de personnage (HP, Critique, Defense)
+- [ ] Gestion des différents types d'arme
+  - [ ] dague dmg * 2 si premier a taper ce tour
+  - [ ] lance tape deux fois dans le tour
+  - [ ] hache applique bleed si enemy ne se defend pas
+  - [ ] longsword ignore la moitié du blocage
 - [x] Cheat code `demonic_eye` (tue tous les ennemis dans la salle actuelle)
 
 ---

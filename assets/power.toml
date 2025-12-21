@@ -1,0 +1,56 @@
+# ---------------------------------------------
+# 5) POUVOIRS PAR TYPE & RANG (IDs côté code)
+#    id: nom logique que tu gèreras en match {}.
+#    chance: 0.0..1.0 | cooldown: en tours | power: scalaire libre
+# ---------------------------------------------
+# Gobelin
+[[powers.by_type.Gobelin.Lambda]]
+id = "Squeashy"      # gagne 2 en vitesse * level
+chance = 0.15
+cooldown = 3
+power = 1
+
+[[powers.by_type.Gobelin.Elite]]
+id = "bleed_strike"
+chance = 0.30
+cooldown = 2
+power = 2
+
+# Orc
+[[powers.by_type.Orc.Named]]
+id = "berserk"
+chance = 0.20
+cooldown = 3
+power = 1
+
+[[powers.by_type.Orc.Boss]]
+id = "earth_shatter"
+chance = 0.35
+cooldown = 4
+power = 3
+
+# Vampire
+[[powers.by_type.Vampire.Named]]
+id = "life_drain"
+chance = 0.25
+cooldown = 3
+power = 1
+
+[[powers.by_type.Vampire.Boss]]
+id = "hypnotize"
+chance = 0.30
+cooldown = 4
+power = 1
+
+# Demon
+[[powers.by_type.Demon.Elite]]
+id = "hellfire"
+chance = 0.35
+cooldown = 3
+power = 2
+
+[[powers.by_type.Demon.Legendary]]
+id = "soul_rend"
+chance = 0.40
+cooldown = 5
+power = 3
