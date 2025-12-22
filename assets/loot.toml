@@ -1,9 +1,3 @@
-# ===============================
-# LOOT — Lambdas seulement
-# ===============================
-# mode = "pick_one" -> max 1 drop par roll (le reste = no drop)
-# rolls = 1 pour tous les lambdas (sobre)
-
 # --------- GOBELIN ---------
 [loot.by_type.Gobelin.Lambda]
 rolls = 1

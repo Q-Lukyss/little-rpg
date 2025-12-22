@@ -1,8 +1,3 @@
-# ---------------------------------------------
-# 5) POUVOIRS PAR TYPE & RANG (IDs côté code)
-#    id: nom logique que tu gèreras en match {}.
-#    chance: 0.0..1.0 | cooldown: en tours | power: scalaire libre
-# ---------------------------------------------
 # Gobelin
 [[powers.by_type.Gobelin.Lambda]]
 id = "Squeashy"      # gagne 2 en vitesse * level

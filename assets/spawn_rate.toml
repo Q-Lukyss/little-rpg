@@ -1,7 +1,3 @@
-# ---------------------------------------------
-# 3) SPAWN RATES (poids) — facultatif
-#    retombe sur DEFAULT_RATES si absent
-# ---------------------------------------------
 [spawn_rates.default_non_boss]
 lambda = 60
 named = 30
