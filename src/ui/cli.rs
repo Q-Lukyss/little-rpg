@@ -1,5 +1,6 @@
 use crate::core::{Action, Combat, Event, Game, GameState};
 use crate::game_mecanics::{Consumable, Loot};
+use colored::Colorize;
 use std::io::{self, Write};
 
 pub struct Cli;
@@ -8,7 +9,7 @@ impl Cli {
     pub fn render(&mut self, game: &Game) {
         match game.state {
             GameState::Exploration => {
-                println!("\n=== Exploration ===");
+                println!("\n{}", "=== Exploration ===".green());
                 println!(
                     "{} | PV: {}/{}.",
                     game.player.name, game.player.stats.hp, game.player.stats.max_hp,
