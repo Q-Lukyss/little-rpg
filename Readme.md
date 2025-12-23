@@ -1,6 +1,6 @@
 # Little-Adventure - Jeu d'Aventure CLI en Rust
 
-![Rust Version](https://img.shields.io/badge/Rust-1.88-orange?logo=rust&logoColor=white&style=for-the-badge)
+![Rust Version](https://img.shields.io/badge/Rust-1.92-orange?logo=rust&logoColor=white&style=for-the-badge)
 
 > Un projet en ligne de commande écrit en Rust, inspiré des mécaniques de RPG classiques et modernes (Dark Souls, roguelike, RPG papier). Le jeu combine narration, exploration, combat stratégique, loot et évolution du personnage.
 
@@ -118,73 +118,34 @@ Combat structuré en **choix tactiques** à chaque tour :
   - **Tier 4** → Multi pattern, Possède des pouvoirs spéciaux.
 
 
-## 🔧 Implémentation de Features
+## Objectifs V1
 
-A redéfinir
-
-<!--### ✅ Phase 1 – Socle de gameplay | But avoir le gameplay fonctionnel
-- [x] Structuration des entités `Player` et `Enemy`
-- [ ] Système de combat **tour par tour** avec choix tactiques :
-  - [ ] Fuite (conserve l’XP mais perd le loot)
-  - [ ] Défense (bouclier requis, riposte si arme à une main)
-  - [ ] Attaque (pattern selon l’arme)
-  - [ ] Parade (riposte spécifique, armes à deux mains ou avec trait *Parade*)
-  - [ ] Utilisation d’objets via l’inventaire
-- [x] Expérience (XP) et montée de niveau
-- [x] Inventaire du joueur (objets, potions)
-- [x] Équipement (armes, armures, accessoires)
-- [x] Types d’ennemis :
-  - Lambda (attaquent simplement)
-  - Nommés
-  - Élites
-  - Légendaires (possibles en salle finale)
-- [ ] Système de coups critiques
-- [ ] Différentes statistiques de personnage (HP, Critique, Defense)
-- [ ] Gestion des différents types d'arme
-  - [ ] dague dmg * 2 si premier a taper ce tour
-  - [ ] lance tape deux fois dans le tour
-  - [ ] hache applique bleed si enemy ne se defend pas
-  - [ ] longsword ignore la moitié du blocage
-- [x] Cheat code `demonic_eye` (tue tous les ennemis dans la salle actuelle)
-
----
-
-### ⚔️ Phase 2 – Progression & profondeur
-- [ ] Loot d’objets et d’XP à la mort d’un ennemi
-- [ ] Gestion des armes à une main / deux mains et compatibilité avec bouclier
-- [ ] Blocage et parade avec valeurs spécifiques (ex. bouclier bloque plus qu’une épée longue)
-- [ ] Système d’IA ennemie basé sur des **patterns** :
-  - Lambda → patterns simples
-  - Autres types → patterns variés et adaptatifs
-- [ ] Pouvoirs spéciaux pour certains ennemis (notamment Boss)
-- [ ] Pouvoir d'arme
-
----
-
-### 🧭 Phase 3 – Exploration et navigation
-- [ ] Système de zones et progression par **Donjons**
-- [ ] Système de donjons avec structure par salles :
-  - Acte 1 → 5 salles
-  - Acte 2 → 10 salles
-  - Types et nombres d’ennemis selon la salle
-- [ ] Menus de navigation (explorer, voir stats, quitter…)
-- [ ] Salles de combat
-- [ ] Sauvegarde et chargement de partie (via `serde_json`)
-
----
-
-### 📜 Phase 4 – Immersion & narration
-- [ ] Texte d’introduction et narration dynamique
-- [ ] Succès / exploits (ex. battre un légendaire, finir un acte sans soins)
-- [ ] Épilogue et crédits
-
----
-
-### 🏆 Phase 5 – Fin & post-game
-- [ ] Fin du jeu (victoire ou boss final)
-- [ ] Déblocage du **mode Hardcore** :
-  - Suppression de la sauvegarde en cas de mort
-  - Fin alternative-->
+Le but de la v1 est d'avoir un projet minimalite mais standalone avec un debut et une fin, pas forcément scénarisée.  
+le joueur commence une partie il ne peux qu'explorer  
+- [ ] Exploration : boucle d'exploration fonctionnelle, le joeur peut  
+  - [ ] Trouver un objet
+  - [ ] Combattre
+  - [ ] Voyager 
+- [ ] Village :
+  - [ ] le joueur peut se soigner a l'auberge
+  - [ ] l'aubergiste donne une quete au joueur (tuer 10 gobelins pour avoir la map du donjon)
+  - [ ] le joeur peut intéragir entre le différents éléments de la ville (magasin, auberge, repartir en exploration)
+- [ ] Quest
+  - [ ] Sur les gobelin on peut drop la clé du donjon (elle est unique)
+  - [ ] Reward peut etre objet, xp 
+  - [ ] traqueur de progres 
+- [ ] Combat
+  - [ ] Combat fonctionnel tour par tour
+  - [ ] Loot des ennemis avec table de loots
+- [ ] Donjon
+  - [ ] Donjon fonctionnel avec plusieurs chambre, gamestate donjon, possibilité de quitter le donjon
+  - [ ] Boss
+  - [ ] message de gg credit v1
+  
+  
+    
+    
+  
 
 ---
 
