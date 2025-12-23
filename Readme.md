@@ -134,6 +134,12 @@ le joueur commence une partie il ne peux qu'explorer
   - [ ] Sur les gobelin on peut drop la clé du donjon (elle est unique)
   - [ ] Reward peut etre objet, xp 
   - [ ] traqueur de progres 
+- [ ] Inventaire
+  - [ ] joueur peut consulter son inventaire
+  - [ ] joueur equiper/desequiper des objets
+  - [ ] joueur peut utiliser des consommables
+  - [ ] joueur peut vendre des objets
+  - [ ] joeur peut lire la description des objets (nom/description)
 - [ ] Combat
   - [ ] Combat fonctionnel tour par tour
   - [ ] Loot des ennemis avec table de loots
