@@ -1,4 +1,4 @@
-use crate::core::{Action, Combat, Event, Game, GameState};
+use crate::core::{Action, Combat, Event, ExplorationAction, Game, GameState};
 use crate::game_mecanics::{Consumable, Loot};
 use colored::Colorize;
 use std::io::{self, Write};
@@ -16,10 +16,12 @@ impl Cli {
                 );
                 println!("Que veux-tu faire ?");
                 println!("1. Explorer");
+                println!("2. Inventaire");
+                println!("3. Menu");
                 println!("q. Quitter");
             }
             GameState::Combat => {
-                println!("\n=== Combat ===");
+                println!("\n{}", "=== Combat ===".red());
                 println!(
                     "{} | PV: {}/{}.",
                     game.player.name, game.player.stats.hp, game.player.stats.max_hp
@@ -28,7 +30,7 @@ impl Cli {
                 println!("q. Quitter");
             }
             GameState::Inventory => {
-                println!("\n=== Inventory ===");
+                println!("\n{}", "=== Inventory ===".yellow());
                 println!(
                     "{} | PV: {}/{}.",
                     game.player.name, game.player.stats.hp, game.player.stats.max_hp
@@ -37,12 +39,12 @@ impl Cli {
                 println!("q. Quitter");
             }
             GameState::Menu => {
-                println!("\n=== Menu ===");
+                println!("\n{}", "=== Menu ===".yellow());
                 println!("(Menu pas encore implémenté dans cet exemple)");
                 println!("q. Quitter");
             }
             GameState::GameOver => {
-                println!("\n=== Game Over ===");
+                println!("\n{}", "=== Game Over ===".red());
                 println!("Tu es mort.");
             }
         }
@@ -70,6 +72,9 @@ impl Cli {
                 Event::EnterCombat => {
                     println!("Vous entrez dans le combat !");
                 }
+                Event::Quit => {
+                    println!("Vous quittez le jeu.");
+                }
                 _ => {
                     println!("Événement nom implémenté");
                 }
@@ -81,7 +86,9 @@ impl Cli {
         let input = read_line_trimmed()?;
         match game.state {
             GameState::Exploration => match input.as_str() {
-                "1" => Some(Action::Explore),
+                "1" => Some(Action::Exploration(ExplorationAction::Explore)),
+                "2" => todo!("Gestion de l'inventaire"),
+                "3" => todo!("Gestion Menu"),
                 "q" | "quit" => Some(Action::Quit),
                 _ => {
                     println!("Commande invalide.");

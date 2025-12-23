@@ -1,4 +1,4 @@
-use crate::game_mecanics::{Armor, Consumable, Quest, Shield, Weapon, first_quest};
+use crate::game_mecanics::{Armor, Consumable, Map, Quest, Shield, Weapon, first_quest};
 
 pub struct Inventory {
     pub weapons: Vec<Weapon>,
@@ -6,6 +6,8 @@ pub struct Inventory {
     pub shields: Vec<Shield>,
     pub consumables: Vec<Consumable>,
     pub quests: Vec<Quest>,
+    pub gold: u32,
+    pub maps: Vec<Map>,
 }
 
 impl Inventory {
@@ -16,6 +18,8 @@ impl Inventory {
             shields: Vec::new(),
             consumables: Vec::new(),
             quests: vec![first_quest()],
+            gold: 0,
+            maps: Vec::new(),
         }
     }
 }

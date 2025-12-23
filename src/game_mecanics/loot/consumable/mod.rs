@@ -1,9 +1,11 @@
+use crate::game_mecanics::{Armor, Shield, Weapon};
+
 #[derive(Debug, Clone)]
 pub enum Consumable {
     Potion(Potion),
     Elixir(ElixirType),
-    Key,
-    QuestItem,
+    Key(Key),
+    QuestItem(QuestItem),
 }
 #[derive(Debug, Clone)]
 pub enum ElixirType {
@@ -11,6 +13,21 @@ pub enum ElixirType {
     Health,
     Defense,
     Speed,
+}
+
+#[derive(Debug, Clone)]
+pub struct Key {
+    pub name: String,
+    pub description: String,
+    pub location_id: u32,
+}
+
+#[derive(Debug, Clone)]
+pub enum QuestItem {
+    Weapon(Weapon),
+    Armor(Armor),
+    Shield(Shield),
+    Key(Key),
 }
 
 #[derive(Debug, Clone)]

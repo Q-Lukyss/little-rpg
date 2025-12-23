@@ -1,14 +1,24 @@
+use crate::game_mecanics::{Location, Loot};
+
 #[derive(Debug)]
 pub enum Action {
-    World(WorldAction),
-    Explore,
+    Menu(MenuAction),
+    Exploration(ExplorationAction),
     Combat(CombatAction),
     Inventory(InventoryAction),
     Quit,
 }
 
 #[derive(Debug)]
-pub enum WorldAction {
+pub enum ExplorationAction {
+    Explore,
+    Travel(Location),
+    EncounterEnemy,
+    FindLoot(Loot),
+}
+
+#[derive(Debug)]
+pub enum MenuAction {
     Interact,
     Craft,
     Save,
@@ -27,7 +37,7 @@ pub enum CombatAction {
 #[derive(Debug)]
 pub enum InventoryAction {
     View,
-    ItemAction(Item),
+    ItemAction(ItemAction),
     Unequip(Item),
 }
 
