@@ -67,6 +67,14 @@ Il se compose de plusieurs éléments :
 
 ### Combat
 
+Systeme de combat tour par tour avec choix d'action et résolution de conflit.
+- Attaque : attaque directe, cumule l'arme, pattern de l'arme et degat de base pour infliger des dégats a un ou plusieurs ennemis.
+- Defense : un defense bloque une attaque, blocage limité ? si degat 2*supérieur a valeur de blocage degat tout de meme.
+si blocage plus haut que defense, l'attaquant prend des dégats.
+- Parry : prendre un risque et anticiper une attaque. si l'adversaire bloque une parry vous etes etourdis pour un tour.
+si vous parry une attaque: si valeur de l'attaquant est supérieur a votre attaque vous prenez les dégat de différence. vous infliger le double de vos dégats d'arme(s) a l'ennemie, l'ennemie est stun pendant un tour
+
+
 ### Inventaire
 
 #### Armes
