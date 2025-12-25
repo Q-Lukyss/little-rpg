@@ -1,4 +1,7 @@
-use crate::game_mecanics::{Location, Loot};
+use crate::{
+    core::Game,
+    game_mecanics::{Combat, Enemy, Item, Location, Loot},
+};
 
 #[derive(Debug, Clone)]
 pub enum Event {
@@ -7,7 +10,6 @@ pub enum Event {
     InventoryEvent(InventoryEvent),
     MenuEvent(MenuEvent),
     EnterCombat,
-    EncounterEnemy,
     FindLoot(Loot),
     Text(String),
     Quit,
@@ -15,47 +17,37 @@ pub enum Event {
 }
 
 #[derive(Debug, Clone)]
-enum Entity {
-    Player,
-    Enemy,
-}
-
-#[derive(Debug, Clone)]
 pub enum ExplorationEvent {
     Explore,
     Travel(Location),
-    EncounterEnemy,
+    EncounterEnemy(Vec<Enemy>),
     FindLoot(Loot),
 }
 
 #[derive(Debug, Clone)]
 pub enum CombatEvent {
     Attack,
-    Defend,
     Block,
     Parry,
-    Heal,
-    Miss,
-    Dodge,
-    CriticalHit,
-    CriticalMiss,
-    Death,
+    Flee,
+    UseItem(Item),
+    EnemyDefeated(Enemy),
+    Report(Combat),
+    ResolveTurn,
 }
 
 #[derive(Debug, Clone)]
 pub enum InventoryEvent {
-    ItemAdded(Loot),
-    ItemRemoved(Loot),
-    ItemUsed(Loot),
-    ItemEquipped(Loot),
-    ItemUnequipped(Loot),
+    ReadItemDetails(Item),
+    EquipItem(Item),
+    UnequipItem(Item),
+    UseItem(Item),
 }
 
 #[derive(Debug, Clone)]
 pub enum MenuEvent {
     MainMenu,
-    Options,
-    Save,
-    Load,
+    Save(Game),
+    Load(Game),
     Quit,
 }

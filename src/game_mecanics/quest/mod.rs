@@ -1,5 +1,6 @@
 use crate::game_mecanics::{Location, Loot, Map};
 
+#[derive(Debug, Clone)]
 pub struct Quest {
     pub name: String,
     pub description: String,

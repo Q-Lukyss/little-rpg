@@ -1,18 +1,18 @@
-use crate::core::{
-    Action, CombatState, Event, ExplorationAction, ExplorationEvent, Game, GameState,
+use crate::core::{Event, ExplorationAction, ExplorationEvent, Game, GameState};
+use crate::game_mecanics::{
+    Armor, Combat, Consumable, Enemy, Location, Loot, Potion, Shield, Weapon,
 };
-use crate::game_mecanics::{Armor, Consumable, Location, Loot, Potion, Shield, Weapon};
 use rand::Rng;
 
-pub struct Exploration {}
+pub struct HandleExploration {}
 
-impl Exploration {
+impl HandleExploration {
     pub fn apply(game: &mut Game, action: ExplorationAction) -> Vec<Event> {
         match action {
-            ExplorationAction::Explore => Exploration::explore(game),
-            ExplorationAction::Travel(location) => Exploration::travel(game, location),
-            ExplorationAction::EncounterEnemy => Exploration::encounter_enemy(game),
-            ExplorationAction::FindLoot(loot) => Exploration::loot(game, loot),
+            ExplorationAction::Explore => HandleExploration::explore(game),
+            ExplorationAction::Travel(location) => HandleExploration::travel(game, location),
+            ExplorationAction::EncounterEnemy => HandleExploration::encounter_enemy(game),
+            ExplorationAction::FindLoot(loot) => HandleExploration::loot(game, loot),
         }
     }
 
@@ -23,15 +23,12 @@ impl Exploration {
 
         match roll {
             0..=49 => {
-                // let enemy = Enemy {
-                //     name: None,
-                //     stats: Stat::new(10, 10, 10, 2),
-                //     inventory: Inventory::new(),
-                // };
-                ev.push(Event::EncounterEnemy);
-
                 game.state = GameState::Combat;
-                game.combat = Some(CombatState::Start);
+                let enemy_vec = vec![Enemy::new_gobelin()];
+                game.combat = Some(Combat::new(game.player.clone(), enemy_vec.clone())); // todo combat.new
+                ev.push(Event::Exploration(ExplorationEvent::EncounterEnemy(
+                    enemy_vec.clone(),
+                )));
                 ev.push(Event::EnterCombat);
             }
             50..=74 => {
@@ -81,7 +78,9 @@ impl Exploration {
 
     fn encounter_enemy(game: &mut Game) -> Vec<Event> {
         game.state = GameState::Combat;
-        game.combat = Some(CombatState::Start);
+        game.combat = Some(todo!(
+            "Faire combat.new avec instanciation ennemi, tour etc"
+        ));
         vec![Event::EnterCombat]
     }
 
@@ -98,6 +97,10 @@ impl Exploration {
             Loot::Shield(shield) => {
                 game.player.inventory.shields.push(shield.clone());
                 vec![Event::FindLoot(Loot::Shield(shield))]
+            }
+            Loot::Trinket(trinket) => {
+                game.player.inventory.trinkets.push(trinket.clone());
+                vec![Event::FindLoot(Loot::Trinket(trinket))]
             }
             Loot::Consumable(consumable) => {
                 game.player.inventory.consumables.push(consumable.clone());

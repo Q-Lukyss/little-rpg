@@ -1,4 +1,7 @@
-use crate::core::{Action, Combat, Event, ExplorationAction, Game, GameState};
+use crate::core::event::CombatEvent;
+use crate::core::{
+    Action, CombatAction, Event, ExplorationAction, ExplorationEvent, Game, GameState,
+};
 use crate::game_mecanics::{Consumable, Loot};
 use colored::Colorize;
 use std::io::{self, Write};
@@ -26,7 +29,12 @@ impl Cli {
                     "{} | PV: {}/{}.",
                     game.player.name, game.player.stats.hp, game.player.stats.max_hp
                 );
-                println!("(Combat pas encore implémenté dans cet exemple)");
+                println!("Que veux-tu faire ?");
+                println!("1. Attaquer");
+                println!("2. Parrer");
+                println!("3. Bloquer");
+                println!("i. Inventaire");
+                println!("f. Fuir");
                 println!("q. Quitter");
             }
             GameState::Inventory => {
@@ -66,14 +74,45 @@ impl Cli {
                 Event::FindLoot(Loot::Armor(armor)) => {
                     println!("Tu trouves une armure : {} ", armor.name);
                 }
-                Event::EncounterEnemy => {
-                    println!("Un ennemi apparaît !");
+                Event::Exploration(ExplorationEvent::EncounterEnemy(enemy_vec)) => {
+                    match enemy_vec.len() {
+                        1 => println!("Un ennemi apparaît !"),
+                        _ => println!("{} ennemis apparaissent", enemy_vec.len()),
+                    }
+                    for enemy in enemy_vec {
+                        let name = enemy.name.clone().unwrap_or_else(|| "Gobelin".to_string());
+                        println!("{} : {}/{}hp", name, enemy.stats.hp, enemy.stats.max_hp);
+                    }
                 }
                 Event::EnterCombat => {
-                    println!("Vous entrez dans le combat !");
+                    println!("un Combat Commence !");
                 }
                 Event::Quit => {
                     println!("Vous quittez le jeu.");
+                }
+                //Combat events
+                Event::CombatEvent(CombatEvent::Attack) => {
+                    println!("Vous attaquez le(s) ennemi(s) !");
+                }
+                Event::CombatEvent(CombatEvent::EnemyDefeated(enemy)) => {
+                    print!(
+                        "Vous avez vaincu {}.",
+                        enemy
+                            .name
+                            .clone()
+                            .unwrap_or_else(|| "le Gobelin".to_string())
+                    );
+                }
+                Event::CombatEvent(CombatEvent::Report(combat)) => {
+                    println!("Combat en cours :");
+                    println!(
+                        "{} : {}/{}hp",
+                        combat.player.name, combat.player.stats.hp, combat.player.stats.max_hp
+                    );
+                    for enemy in combat.opponents.clone() {
+                        let name = enemy.name.clone().unwrap_or_else(|| "Gobelin".to_string());
+                        println!("{} : {}/{}hp", name, enemy.stats.hp, enemy.stats.max_hp);
+                    }
                 }
                 _ => {
                     println!("Événement nom implémenté");
@@ -96,9 +135,17 @@ impl Cli {
                 }
             },
             GameState::Combat => match input.as_str() {
+                "1" => Some(Action::Combat(CombatAction::Attack)),
+                "2" => Some(Action::Combat(CombatAction::Parry)),
+                "3" => Some(Action::Combat(CombatAction::Block)),
+                "i" => {
+                    println!("Acces inventaire pas encore implémenté");
+                    None
+                }
+                "f" => Some(Action::Combat(CombatAction::Flee)),
                 "q" | "quit" => Some(Action::Quit),
                 _ => {
-                    println!("(Combat pas dispo ici) Tape q pour quitter.");
+                    println!("Commande invalide.");
                     None
                 }
             },

@@ -3,7 +3,7 @@ mod game_mecanics;
 mod ui;
 
 use crate::core::{Action, Event, Game, GameState};
-use crate::game_mecanics::{Exploration, Inventory, Menu};
+use crate::game_mecanics::{HandleCombat, HandleExploration};
 use crate::ui::Cli;
 
 fn main() {
@@ -30,11 +30,15 @@ fn main() {
 fn apply(game: &mut Game, action: Action) -> Vec<Event> {
     match (&game.state, action) {
         (GameState::Exploration, Action::Exploration(exploration_action)) => {
-            Exploration::apply(game, exploration_action)
+            HandleExploration::apply(game, exploration_action)
         }
-        (GameState::Menu, Action::Menu(menu_action)) => todo!(),
-        (GameState::Combat, Action::Combat(combat_action)) => todo!(),
-        (GameState::Inventory, Action::Inventory(inventory_action)) => todo!(),
+        (GameState::Menu, Action::Menu(menu_action)) => todo!("implementer main.rs menuAction"),
+        (GameState::Combat, Action::Combat(combat_action)) => {
+            HandleCombat::apply(game, combat_action)
+        }
+        (GameState::Inventory, Action::Inventory(inventory_action)) => {
+            todo!("implementer main.rs inventoryAction")
+        }
         (GameState::GameOver, _) => {
             vec![Event::GameOver]
         }

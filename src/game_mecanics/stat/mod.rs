@@ -1,3 +1,4 @@
+#[derive(Debug, Clone)]
 pub struct Stat {
     pub hp: u32,
     pub max_hp: u32,

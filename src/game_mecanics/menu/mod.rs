@@ -1,4 +1,4 @@
-use crate::core::{Action, CombatState, Event, Game, GameState};
+use crate::core::{Action, Event, Game, GameState};
 use crate::game_mecanics::{Armor, Consumable, Loot, Potion, Shield, Weapon};
 
 pub struct Menu {}

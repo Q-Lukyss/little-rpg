@@ -1,6 +1,6 @@
-use crate::game_mecanics::{Location, Loot};
+use crate::game_mecanics::{Item, Location, Loot};
 
-#[derive(Debug)]
+#[derive(Debug, Clone)]
 pub enum Action {
     Menu(MenuAction),
     Exploration(ExplorationAction),
@@ -9,7 +9,7 @@ pub enum Action {
     Quit,
 }
 
-#[derive(Debug)]
+#[derive(Debug, Clone)]
 pub enum ExplorationAction {
     Explore,
     Travel(Location),
@@ -17,57 +17,33 @@ pub enum ExplorationAction {
     FindLoot(Loot),
 }
 
-#[derive(Debug)]
-pub enum MenuAction {
-    Interact,
-    Craft,
-    Save,
-}
-
-#[derive(Debug)]
+#[derive(Debug, Clone)]
 pub enum CombatAction {
     Attack,
-    Defend,
     Parry,
     Block,
     Flee,
     UseItem(Item),
 }
 
-#[derive(Debug)]
+#[derive(Debug, Clone)]
+pub enum MenuAction {
+    Interact,
+    Craft,
+    Save,
+}
+
+#[derive(Debug, Clone)]
 pub enum InventoryAction {
     View,
     ItemAction(ItemAction),
     Unequip(Item),
 }
 
-#[derive(Debug)]
+#[derive(Debug, Clone)]
 pub enum ItemAction {
     Use(Item),
     Equip(Item),
     Unequip(Item),
     Read(Item),
-}
-
-#[derive(Debug)]
-pub enum Item {
-    Weapon(WeaponType),
-    Armor,
-    Consumable(ConsumableType),
-    Shield,
-    Trinket,
-}
-
-#[derive(Debug)]
-pub enum ConsumableType {
-    Potion,
-    Elixir,
-}
-
-#[derive(Debug)]
-pub enum WeaponType {
-    Sword,
-    Axe,
-    Spear,
-    LongSword,
 }
