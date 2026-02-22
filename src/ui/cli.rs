@@ -1,6 +1,6 @@
 use crate::core::event::CombatEvent;
 use crate::core::{
-    Action, CombatAction, Event, ExplorationAction, ExplorationEvent, Game, GameState,
+    Action, App, CombatAction, Event, ExplorationAction, ExplorationEvent, GameState,
 };
 use crate::game_mecanics::{Consumable, Loot};
 use colored::Colorize;

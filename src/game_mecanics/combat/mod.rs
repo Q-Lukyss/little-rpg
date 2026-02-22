@@ -1,5 +1,5 @@
 use crate::core::event::CombatEvent;
-use crate::core::{CombatAction, Event, Game, GameState};
+use crate::core::{App, CombatAction, Event, GameState};
 use crate::game_mecanics::entity::{Alive, MainHand, OffHand, OffHandState};
 use crate::game_mecanics::{Armor, Enemy, Entity, Player, Shield, Trinket, Weapon, combat};
 use rand::Rng;
@@ -131,7 +131,7 @@ impl Combat {
 pub struct HandleCombat {}
 
 impl HandleCombat {
-    pub fn apply(game: &mut Game, action: CombatAction) -> Vec<Event> {
+    pub fn apply(game: &mut App, action: CombatAction) -> Vec<Event> {
         let combat = game
             .combat
             .as_mut()

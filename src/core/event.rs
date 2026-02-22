@@ -1,5 +1,5 @@
 use crate::{
-    core::Game,
+    core::App,
     game_mecanics::{Combat, Enemy, Item, Location, Loot},
 };
 
