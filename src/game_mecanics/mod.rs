@@ -8,7 +8,7 @@ pub mod quest;
 pub mod stat;
 
 pub use combat::{Combat, CombatState, HandleCombat};
-pub use entity::{Enemy, Entity, Equipment, Player};
+pub use entity::{Alive, Enemy, Entity, Equipment, Player};
 pub use exploration::HandleExploration;
 pub use inventory::{Inventory, Item};
 pub use loot::{

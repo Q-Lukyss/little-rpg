@@ -2,46 +2,108 @@ mod core;
 mod game_mecanics;
 mod ui;
 
-use crate::core::{Action, Event, Game, GameState};
+use std::error::Error;
+use std::io::stdout;
+
+use ratatui::Terminal;
+use ratatui::prelude::{Backend, CrosstermBackend};
+
+use crate::core::{Action, App, Event, GameState};
 use crate::game_mecanics::{HandleCombat, HandleExploration};
-use crate::ui::Cli;
+use crate::ui::ratatui::Ratatui;
 
-fn main() {
-    let mut game = Game::new("Lukyss");
-    let mut ui = Cli;
+fn main() -> Result<(), Box<dyn Error>> {
+    let mut app = App::new();
+    let mut ui = Ratatui;
 
-    ui.render(&game);
+    let backend = CrosstermBackend::new(stdout());
+    let mut terminal = Terminal::new(backend)?;
 
-    loop {
-        let action = match ui.read_action(&game) {
-            Some(a) => a,
-            None => break,
-        };
+    let mut app = App::new();
+    run(&mut terminal, &mut app);
 
-        let events = apply(&mut game, action);
-        ui.render_events(&events);
-        ui.render(&game);
-        if matches!(game.state, GameState::GameOver) {
-            break;
-        }
-    }
+    Ok(())
 }
 
-fn apply(game: &mut Game, action: Action) -> Vec<Event> {
-    match (&game.state, action) {
-        (GameState::Exploration, Action::Exploration(exploration_action)) => {
-            HandleExploration::apply(game, exploration_action)
+fn run<B: Backend>(terminal: &mut Terminal<B>, app: &mut App) -> Vec<Event> {
+    let mut ui = Ratatui;
+    loop {
+        terminal.draw(|f| ui.render(f, app))?;
+
+        if let Event::Key(key) = event::read()? {
+            if key.kind == event::KeyEventKind::Release {
+                // Skip events that are not KeyEventKind::Press
+                continue;
+            }
+            match app.current_screen {
+                CurrentScreen::Main => match key.code {
+                    KeyCode::Char('e') => {
+                        app.current_screen = CurrentScreen::Editing;
+                        app.currently_editing = Some(CurrentlyEditing::Key);
+                    }
+                    KeyCode::Char('q') => {
+                        app.current_screen = CurrentScreen::Exiting;
+                    }
+                    _ => {}
+                },
+                CurrentScreen::Exiting => match key.code {
+                    KeyCode::Char('y') => {
+                        return Ok(true);
+                    }
+                    KeyCode::Char('n') | KeyCode::Char('q') => {
+                        return Ok(false);
+                    }
+                    _ => {}
+                },
+                CurrentScreen::Editing if key.kind == KeyEventKind::Press => match key.code {
+                    KeyCode::Enter => {
+                        if let Some(editing) = &app.currently_editing {
+                            match editing {
+                                CurrentlyEditing::Key => {
+                                    app.currently_editing = Some(CurrentlyEditing::Value);
+                                }
+                                CurrentlyEditing::Value => {
+                                    app.save_key_value();
+                                    app.current_screen = CurrentScreen::Main;
+                                }
+                            }
+                        }
+                    }
+                    KeyCode::Backspace => {
+                        if let Some(editing) = &app.currently_editing {
+                            match editing {
+                                CurrentlyEditing::Key => {
+                                    app.key_input.pop();
+                                }
+                                CurrentlyEditing::Value => {
+                                    app.value_input.pop();
+                                }
+                            }
+                        }
+                    }
+                    KeyCode::Esc => {
+                        app.current_screen = CurrentScreen::Main;
+                        app.currently_editing = None;
+                    }
+                    KeyCode::Tab => {
+                        app.toggle_editing();
+                    }
+                    KeyCode::Char(value) => {
+                        if let Some(editing) = &app.currently_editing {
+                            match editing {
+                                CurrentlyEditing::Key => {
+                                    app.key_input.push(value);
+                                }
+                                CurrentlyEditing::Value => {
+                                    app.value_input.push(value);
+                                }
+                            }
+                        }
+                    }
+                    _ => {}
+                },
+                _ => {}
+            }
         }
-        (GameState::Menu, Action::Menu(menu_action)) => todo!("implementer main.rs menuAction"),
-        (GameState::Combat, Action::Combat(combat_action)) => {
-            HandleCombat::apply(game, combat_action)
-        }
-        (GameState::Inventory, Action::Inventory(inventory_action)) => {
-            todo!("implementer main.rs inventoryAction")
-        }
-        (GameState::GameOver, _) => {
-            vec![Event::GameOver]
-        }
-        _ => todo!("Apply gestion autres etats main.rs"),
     }
 }

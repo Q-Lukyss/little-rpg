@@ -81,10 +81,6 @@ impl Enemy {
         }
     }
 
-    pub fn is_dead(&self) -> bool {
-        self.stats.hp <= 0
-    }
-
     pub fn new_gobelin() -> Self {
         Self::new(
             None,
@@ -133,4 +129,29 @@ pub enum EnemyRace {
     Orc,
     Demon,
     Vampire,
+}
+
+pub trait Alive {
+    fn is_dead(&self) -> bool;
+    fn take_damage(&mut self, amount: u32);
+}
+
+impl Alive for Player {
+    fn is_dead(&self) -> bool {
+        self.stats.hp <= 0
+    }
+
+    fn take_damage(&mut self, amount: u32) {
+        self.stats.hp = self.stats.hp.saturating_sub(amount);
+    }
+}
+
+impl Alive for Enemy {
+    fn is_dead(&self) -> bool {
+        self.stats.hp <= 0
+    }
+
+    fn take_damage(&mut self, amount: u32) {
+        self.stats.hp = self.stats.hp.saturating_sub(amount);
+    }
 }

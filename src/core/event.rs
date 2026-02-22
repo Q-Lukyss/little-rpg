@@ -26,9 +26,9 @@ pub enum ExplorationEvent {
 
 #[derive(Debug, Clone)]
 pub enum CombatEvent {
-    Attack,
-    Block,
-    Parry,
+    Attack(Combat),
+    Block(Combat),
+    Parry(Combat),
     Flee,
     UseItem(Item),
     EnemyDefeated(Enemy),

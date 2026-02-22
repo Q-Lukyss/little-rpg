@@ -91,7 +91,7 @@ impl Cli {
                     println!("Vous quittez le jeu.");
                 }
                 //Combat events
-                Event::CombatEvent(CombatEvent::Attack) => {
+                Event::CombatEvent(CombatEvent::Attack(combat)) => {
                     println!("Vous attaquez le(s) ennemi(s) !");
                 }
                 Event::CombatEvent(CombatEvent::EnemyDefeated(enemy)) => {

@@ -1,7 +1,7 @@
 pub mod action;
+pub mod app;
 pub mod event;
-pub mod game;
 
 pub use action::{Action, CombatAction, ExplorationAction};
+pub use app::{App, GameState};
 pub use event::{Event, ExplorationEvent};
-pub use game::{Game, GameState};
