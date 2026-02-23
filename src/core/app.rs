@@ -5,6 +5,7 @@ pub struct App {
     pub player: Option<Player>,
     pub current_screen: CurrentScreen,
     pub combat: Option<Combat>,
+    pub start_menu_selected: StartMenuItem,
 }
 
 #[derive(Debug, Clone)]
@@ -12,6 +13,12 @@ pub enum CurrentScreen {
     StartScreen,
     PauseScreen,
     MainScreen,
+    Quit,
+}
+
+#[derive(Debug, Clone)]
+pub enum StartMenuItem {
+    NewGame,
     Quit,
 }
 
@@ -30,6 +37,7 @@ impl App {
             player: None,
             current_screen: CurrentScreen::StartScreen,
             combat: None,
+            start_menu_selected: StartMenuItem::NewGame,
         }
     }
     pub fn start(&mut self) {
@@ -47,12 +55,22 @@ impl App {
     pub fn quit(&mut self) {
         self.current_screen = CurrentScreen::Quit;
     }
-    pub fn read_action(&mut self) -> Option<Action> {
-        match self.current_screen {
-            CurrentScreen::StartScreen => None,
-            CurrentScreen::PauseScreen => None,
-            CurrentScreen::MainScreen => None,
-            CurrentScreen::Quit => None,
+    pub fn start_menu_next(&mut self) {
+        self.start_menu_selected = match self.start_menu_selected {
+            StartMenuItem::NewGame => StartMenuItem::Quit,
+            StartMenuItem::Quit => StartMenuItem::NewGame,
+        };
+    }
+    pub fn start_menu_previous(&mut self) {
+        self.start_menu_selected = match self.start_menu_selected {
+            StartMenuItem::NewGame => StartMenuItem::Quit,
+            StartMenuItem::Quit => StartMenuItem::NewGame,
+        };
+    }
+    pub fn validate_start_menu(&mut self) {
+        match self.start_menu_selected {
+            StartMenuItem::NewGame => self.start(),
+            StartMenuItem::Quit => self.quit(),
         }
     }
 }
