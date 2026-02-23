@@ -131,55 +131,5 @@ impl Combat {
 pub struct HandleCombat {}
 
 impl HandleCombat {
-    pub fn apply(game: &mut App, action: CombatAction) -> Vec<Event> {
-        let combat = game
-            .combat
-            .as_mut()
-            .expect("HandleCombat appelé avec combat = None");
-
-        let state = mem::replace(&mut combat.state, CombatState::PlayerAction);
-        match (state, action) {
-            (CombatState::PlayerAction, combat_action) => {
-                let mut ev: Vec<Event> = vec![];
-                match combat_action {
-                    CombatAction::Attack => {
-                        combat.resolve_turn(
-                            CombatAction::Attack,
-                            combat.opponents[0].attack_pattern[0],
-                            &mut combat.opponents[0],
-                        );
-                        ev.push(Event::CombatEvent(CombatEvent::Attack(combat.clone())));
-                        ev.push(Event::CombatEvent(CombatEvent::Report(combat.clone())));
-                        for enemy in combat.opponents.iter().filter(|e| e.stats.hp <= 0) {
-                            ev.push(Event::CombatEvent(CombatEvent::EnemyDefeated(
-                                enemy.clone(),
-                            )));
-                        }
-                        combat.opponents.retain(|e| !e.is_dead());
-                        if combat.opponents.is_empty() {
-                            game.state = GameState::Exploration;
-                        }
-                    }
-                    CombatAction::Parry => {
-                        ev.push(Event::CombatEvent(CombatEvent::Parry(combat.clone())))
-                    }
-                    CombatAction::Block => {
-                        ev.push(Event::CombatEvent(CombatEvent::Block(combat.clone())))
-                    }
-                    CombatAction::Flee => ev.push(Event::CombatEvent(CombatEvent::Flee)),
-                    CombatAction::UseItem(item) => {
-                        ev.push(Event::CombatEvent(CombatEvent::UseItem(item)));
-                    }
-                }
-
-                ev
-            }
-            (CombatState::Resolve(action), _) => {
-                todo!()
-            }
-            (CombatState::End, _) => {
-                todo!()
-            }
-        }
-    }
+    pub fn apply(app: &mut App, action: CombatAction) {}
 }

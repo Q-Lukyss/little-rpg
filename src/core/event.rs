@@ -47,7 +47,7 @@ pub enum InventoryEvent {
 #[derive(Debug, Clone)]
 pub enum MenuEvent {
     MainMenu,
-    Save(Game),
-    Load(Game),
+    Save,
+    Load(App),
     Quit,
 }
