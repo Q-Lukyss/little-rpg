@@ -2,23 +2,28 @@ use crate::game_mecanics::{Combat, Equipment, Inventory, Player, Stat};
 
 #[derive(Debug, Clone)]
 pub struct App {
-    pub player: Option<Player>,
-    pub current_screen: CurrentScreen,
-    pub combat: Option<Combat>,
-    pub start_menu_selected: StartMenuItem,
+    screen: MenuScreen,
+    game: Option<Game>,
 }
 
 #[derive(Debug, Clone)]
-pub enum CurrentScreen {
+pub enum MenuScreen {
+    NewGameScreen,
+    Quit,
+}
+#[derive(Debug, Clone)]
+pub struct Game {
+    player: Player,
+    current_screen: GameScreen,
+    state: GameState,
+    combat: Option<Combat>,
+}
+
+#[derive(Debug, Clone)]
+pub enum GameScreen {
     StartScreen,
     PauseScreen,
     MainScreen,
-    Quit,
-}
-
-#[derive(Debug, Clone)]
-pub enum StartMenuItem {
-    NewGame,
     Quit,
 }
 
